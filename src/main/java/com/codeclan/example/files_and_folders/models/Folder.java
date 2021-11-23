@@ -10,11 +10,16 @@ import java.util.List;
 @Table(name = "folders")
 public class Folder {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
     @Column(name = "title")
     private String title;
     @Column(name = "user")
 
     @ManyToOne
+    @JoinColumn(name = "file_id", nullable = false)
     @JsonIgnoreProperties({"folder"})
     private User user;
 
@@ -30,6 +35,14 @@ public class Folder {
 
     public Folder(){
 
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitle() {
