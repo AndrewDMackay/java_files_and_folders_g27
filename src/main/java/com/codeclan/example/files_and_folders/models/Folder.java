@@ -16,7 +16,6 @@ public class Folder {
     private Long id;
     @Column(name = "title")
     private String title;
-    @Column(name = "user")
 
     @ManyToOne
     @JoinColumn(name = "file_id", nullable = false)

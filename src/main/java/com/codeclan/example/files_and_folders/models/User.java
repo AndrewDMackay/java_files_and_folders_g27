@@ -18,9 +18,8 @@ public class User {
     @Column(name = "name")
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "folder_id", nullable = false)
-    @JsonIgnoreProperties({"users"})
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"user"})
     private List<Folder> folders;
 
     public User(String name) {
@@ -30,6 +29,14 @@ public class User {
 
     public User(){
 
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
